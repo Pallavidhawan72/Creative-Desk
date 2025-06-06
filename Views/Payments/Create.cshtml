@@ -1,0 +1,22 @@
+﻿@model Payment
+
+<h2>Add New Payment</h2>
+
+<form asp-action="Create" method="post">
+    <label>Project ID:</label>
+    <input type="number" asp-for="ProjectId" class="form-control" required />
+
+    <label>Amount:</label>
+    <input type="number" asp-for="Amount" class="form-control" required />
+
+    <label>Payment Status:</label>
+    <select asp-for="PaymentStatus" class="form-control">
+        <option value="Pending">Pending</option>
+        <option value="Paid">Paid</option>
+    </select>
+
+    <label>Payment Date:</label>
+    <input type="date" asp-for="PaymentDate" class="form-control" required />
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

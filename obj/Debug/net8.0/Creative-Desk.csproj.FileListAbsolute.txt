@@ -1,0 +1,7 @@
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.GeneratedMSBuildEditorConfig.editorconfig
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.AssemblyInfoInputs.cache
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.AssemblyInfo.cs
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.csproj.CoreCompileInputs.cache
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.MvcApplicationPartsAssemblyInfo.cache
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.RazorAssemblyInfo.cache
+D:\Christine\Creative-Desk\obj\Debug\net8.0\Creative-Desk.RazorAssemblyInfo.cs

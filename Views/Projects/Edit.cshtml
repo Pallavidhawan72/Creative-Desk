@@ -1,0 +1,26 @@
+﻿@model Project
+
+<h2>Edit Project</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ProjectId" />
+
+    <label>Name:</label>
+    <input type="text" asp-for="Name" class="form-control" required />
+
+    <label>Deadline:</label>
+    <input type="date" asp-for="Deadline" class="form-control" required />
+
+    <label>Status:</label>
+    <select asp-for="Status" class="form-control">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+    <label>Total Payment:</label>
+    <input type="number" asp-for="TotalPayment" class="form-control" required />
+
+    <button type="submit" class="btn btn-warning">Save Changes</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+</form>

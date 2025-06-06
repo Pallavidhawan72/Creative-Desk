@@ -1,0 +1,10 @@
+﻿@model Project
+
+<h2>@Model.Name</h2>
+
+<p><strong>Deadline:</strong> @Model.Deadline.ToString("yyyy-MM-dd")</p>
+<p><strong>Status:</strong> @Model.Status</p>
+<p><strong>Total Payment:</strong> @Model.TotalPayment</p>
+
+<a href="@Url.Action("Edit", new { id = Model.ProjectId })" class="btn btn-warning">Edit</a>
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back</a>
