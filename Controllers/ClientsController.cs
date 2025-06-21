@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CreativeDesk.Data;     // ✅ Use your real namespace here
-using CreativeDesk.Models;   // ✅ Use your real namespace here
+using CreativeDesk.Data;    
+using CreativeDesk.Models;   
 
 namespace CreativeDesk.Controllers
 {
