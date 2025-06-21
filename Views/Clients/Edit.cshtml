@@ -1,0 +1,29 @@
+@model CreativeDesk.Models.Client
+
+<h2 style="text-align:center;color:#423E37;">Edit Client</h2>
+<div style="max-width:500px;margin:2rem auto;background:#fff;border-radius:14px;padding:2rem 2.5rem;border:1px solid #E3B23C;">
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ClientId" />
+    <validation-summary class="text-danger" asp-validation-summary="All"></validation-summary>
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-input" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-input" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:flex-end;">
+        <button type="submit" class="btn btn-primary">Update Client</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

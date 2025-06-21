@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CreativeDesk</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="landing-page" style="min-height:100vh;display:flex;flex-direction:column;">
+        <header class="landing-header" style="background: none; box-shadow: none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;">
+            <div class="logo" style="color:#E3B23C;font-size:2.2rem;">CreativeDesk</div>
+            <img src="~/images/logo.png" alt="Logo" style="display:block;margin:auto;height:120px;max-width:100%;" />
+        </header>
+        <main style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <section class="hero" style="color:#EDEBD7;max-width:600px;text-align:center;">
+                <h1 style="font-size:3rem;font-weight:700;margin-bottom:1rem;letter-spacing:1px;">Unleash Your Creative Workflow</h1>
+                <p style="font-size:1.2rem;margin-bottom:2rem;opacity:0.95;">A modern platform for creative project management, collaboration, and effortless productivity.</p>
+            </section>
+            <section class="auth-section" style="width:100%;max-width:400px;margin:2rem auto 0 auto;display:flex;flex-direction:column;align-items:center;">
+                <div style="background:#EDEBD7;padding:2rem 2.5rem;border-radius:14px;box-shadow:0 2px 16px rgba(66,62,55,0.08);width:100%;">
+                    <h2 style="color:#423E37;font-size:1.5rem;font-weight:600;margin-bottom:1.5rem;text-align:center;">Get Started</h2>
+                    <div style="display:flex;gap:1rem;justify-content:center;">
+                        <button type="button" class="btn btn-primary" style="background:#E3B23C;color:#423E37;" onclick="showMainApp(true)">Login</button>
+                        <button type="button" class="btn btn-secondary" style="background:#423E37;color:#EDEBD7;" onclick="toggleRegisterForm()">Register</button>
+                    </div>
+                    <form id="registerForm" style="display:none;margin-top:2rem;flex-direction:column;gap:1rem;" onsubmit="return showThankYou(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="registerName">Name</label>
+                            <input class="form-input" type="text" id="registerName" name="registerName" required />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="registerEmail">Email</label>
+                            <input class="form-input" type="email" id="registerEmail" name="registerEmail" required />
+                        </div>
+                        <div style="display:flex;justify-content:flex-end;gap:1rem;">
+                            <button type="button" class="btn btn-secondary" onclick="toggleRegisterForm()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                    <div id="registerThankYou" style="display:none;margin-top:2rem;text-align:center;color:#423E37;font-weight:600;">Thank you for registering! We'll be in touch soon.</div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer" style="background:#423E37;color:#EDEBD7;">
+            &copy; 2025 - CreativeDesk - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color:#E3B23C;">Privacy</a>
+        </footer>
+    </div>
+    <div class="main-content" style="display:none;">
+        <nav class="main-nav" style="background:#423E37;padding:1rem 2rem;display:flex;gap:2rem;align-items:center;">
+            <a href="/Projects" class="btn btn-secondary" style="background:#E3B23C;color:#423E37;">Projects</a>
+            <a href="/Clients" class="btn btn-secondary" style="background:#E3B23C;color:#423E37;">Clients</a>
+            <a href="/Designers" class="btn btn-secondary" style="background:#E3B23C;color:#423E37;">Designers</a>
+            <a href="/UpcomingProjects" class="btn btn-secondary" style="background:#E3B23C;color:#423E37;">Upcoming Projects</a>
+            <a href="/DesignersAvailability" class="btn btn-secondary" style="background:#E3B23C;color:#423E37;">Designers Availability</a>
+            <button type="button" class="btn btn-secondary" style="margin-left:auto;background:#E3B23C;color:#423E37;" onclick="logoutApp()">Logout</button>
+        </nav>
+        @RenderBody()
+    </div>
+    <script>
+        function toggleRegisterForm() {
+            var form = document.getElementById('registerForm');
+            var thankYou = document.getElementById('registerThankYou');
+            if (form.style.display === 'none') {
+                form.style.display = 'flex';
+                thankYou.style.display = 'none';
+            } else {
+                form.style.display = 'none';
+                thankYou.style.display = 'none';
+            }
+        }
+        function showThankYou(e) {
+            e.preventDefault();
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('registerThankYou').style.display = 'block';
+            return false;
+        }
+        function showMainApp(setLogin) {
+            if (setLogin) {
+                localStorage.setItem('cd_logged_in', 'true');
+            }
+            document.querySelector('.landing-page').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'block';
+        }
+        function logoutApp() {
+            localStorage.removeItem('cd_logged_in');
+            document.querySelector('.main-content').style.display = 'none';
+            document.querySelector('.landing-page').style.display = 'flex';
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('cd_logged_in') === 'true') {
+                showMainApp(false);
+            } else {
+                if (document.querySelector('.main-content')) {
+                    document.querySelector('.main-content').style.display = 'none';
+                }
+                if (document.querySelector('.landing-page')) {
+                    document.querySelector('.landing-page').style.display = 'flex';
+                }
+            }
+        });
+    </script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

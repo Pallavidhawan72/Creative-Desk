@@ -1,0 +1,50 @@
+@model IEnumerable<CreativeDesk.Models.DesignerAvailabilityViewModel>
+<h1 style="margin-bottom:1.5rem;color:#423E37;">Designers Availability</h1>
+@foreach (var designer in Model)
+{
+    <div style="margin-bottom:2rem;">
+        <h3 style="color:#E3B23C;">@designer.Name</h3>
+        <div class="table-container" style="padding:1.5rem 1rem;background:#fff;border-radius:12px;border:1px solid #E3B23C;">
+            <table class="table" style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Project</th>
+                        <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Deadline</th>
+                        <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Reassign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var assignment in designer.Projects)
+                    {
+                        <tr>
+                            <td style="padding:1rem; vertical-align:middle;">@assignment.ProjectTitle</td>
+                            <td style="padding:1rem; vertical-align:middle;">@assignment.Deadline.ToShortDateString()</td>
+                            <td style="padding:1rem; vertical-align:middle;">
+                                <form asp-action="ReassignDesigner" method="post" style="margin:0;">
+                                    <div style="display:flex;align-items:center;gap:0.7rem;">
+                                        <input type="hidden" name="DesignerId" value="@designer.DesignerId" />
+                                        <input type="hidden" name="CurrentProjectId" value="@assignment.ProjectId" />
+                                        <select name="NewProjectId" class="form-input" style="min-width:180px;height:2.4rem;">
+                                            @foreach (var project in designer.AllProjects)
+                                            {
+                                                if (project.ProjectId == assignment.ProjectId)
+                                                {
+                                                    <option value="@project.ProjectId" selected>@project.Title</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@project.ProjectId">@project.Title</option>
+                                                }
+                                            }
+                                        </select>
+                                        <button type="submit" class="btn btn-primary" style="padding:0.5rem 1.2rem;min-width:90px;">Reassign</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+} 

@@ -1,0 +1,316 @@
+/* CreativeDesk Flat Theme with Custom Palette */
+:root {
+    --cd-dark: #423E37;
+    --cd-gold: #E3B23C;
+    --cd-light: #EDEBD7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--cd-light);
+    min-height: 100vh;
+    color: var(--cd-dark);
+}
+
+.landing-header {
+    background: var(--cd-dark);
+    box-shadow: none;
+    padding: 2rem 0 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--cd-gold);
+    letter-spacing: 2px;
+}
+
+.hero {
+    color: var(--cd-dark);
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    color: var(--cd-gold);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    color: var(--cd-dark);
+}
+
+.auth-section {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-section > div {
+    background: var(--cd-light);
+    padding: 2rem 2.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--cd-gold);
+    width: 100%;
+}
+
+.auth-section h2 {
+    color: var(--cd-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.btn {
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 0.2rem;
+}
+
+.btn-primary {
+    background: var(--cd-gold);
+    color: var(--cd-dark);
+}
+
+.btn-secondary {
+    background: var(--cd-dark);
+    color: var(--cd-light);
+}
+
+.btn:hover {
+    background: var(--cd-gold);
+    color: var(--cd-dark);
+    opacity: 0.9;
+}
+
+.footer {
+    color: var(--cd-light);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1rem;
+    background: var(--cd-dark);
+    border-top: 1px solid var(--cd-gold);
+}
+
+.footer a {
+    color: var(--cd-gold);
+    text-decoration: underline;
+}
+
+/* Main content blocks for all pages */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background: var(--cd-light);
+}
+
+.page {
+    background: #fff;
+    border-radius: 14px;
+    padding: 2rem;
+    min-height: 60vh;
+    border: 1px solid var(--cd-gold);
+}
+
+.page-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--cd-dark);
+}
+
+.widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.widget {
+    background: var(--cd-gold);
+    border-radius: 10px;
+    padding: 1.2rem;
+    border: 1px solid var(--cd-dark);
+    color: var(--cd-dark);
+}
+
+.widget-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--cd-dark);
+}
+
+.widget-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--cd-dark);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cd-gold);
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--cd-gold);
+}
+
+th, td {
+    padding: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--cd-light);
+}
+
+th {
+    background: var(--cd-gold);
+    font-weight: 600;
+    color: var(--cd-dark);
+}
+
+tr:hover {
+    background: var(--cd-light);
+}
+
+.status-badge {
+    padding: 0.22rem 0.7rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: var(--cd-gold);
+    color: var(--cd-dark);
+    border: 1px solid var(--cd-dark);
+}
+
+.status-active { background: var(--cd-gold); color: var(--cd-dark); }
+.status-inactive { background: var(--cd-dark); color: var(--cd-light); }
+.status-paid { background: var(--cd-light); color: var(--cd-dark); border: 1px solid var(--cd-gold); }
+.status-unpaid { background: #fff; color: var(--cd-dark); border: 1px solid var(--cd-gold); }
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: var(--cd-dark);
+}
+
+.form-input, select.form-input, textarea.form-input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--cd-gold);
+    border-radius: 7px;
+    background: #fff;
+    color: var(--cd-dark);
+    font-size: 1rem;
+    transition: border 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--cd-dark);
+    outline: none;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    background: var(--cd-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cd-dark);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+    .hero h1 { font-size: 1.5rem; }
+    .auth-section > div { padding: 1.2rem 1rem; }
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+}
+
+.feature {
+    text-align: center;
+    max-width: 200px;
+}
+
+.feature-icon {
+    width: 54px;
+    height: 54px;
+    background: #eaf6f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 1rem;
+    color: #5ec6ca;
+}
+
+.sidebar {
+    width: 240px;
+    min-width: 180px;
+    border-right: 1px solid #e3e8ee;
+}
+
+.nav-item {
+    display: block;
+    padding: 1rem 2rem;
+    color: #7b8fa1;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.nav-item.active, .nav-item:hover {
+    background: #eaf6f6;
+    border-left-color: #5ec6ca;
+    color: #222;
+}
+
+@media (max-width: 768px) {
+    .sidebar { width: 140px; }
+    .widgets-grid { grid-template-columns: 1fr; }
+    .features { flex-direction: column; align-items: center; }
+    .hero h1 { font-size: 2rem; }
+}

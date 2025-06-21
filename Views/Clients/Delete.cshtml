@@ -1,0 +1,15 @@
+@model CreativeDesk.Models.Client
+
+<h1 style="text-align:center;color:#c0392b;">Delete Client</h1>
+<div style="max-width:500px;margin:2rem auto;background:#fff;border-radius:14px;padding:2rem 2.5rem;border:1px solid #E3B23C;">
+    <h3 style="color:#c0392b;">Are you sure you want to delete this client?</h3>
+    <h4 style="color:#E3B23C;">@Model.Name</h4>
+    <p>@Model.Email</p>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="ClientId" />
+        <div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

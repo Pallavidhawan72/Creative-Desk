@@ -1,0 +1,16 @@
+@model CreativeDesk.Models.Client
+
+<h1 style="text-align:center;color:#423E37;">Client Details</h1>
+<div style="max-width:500px;margin:2rem auto;background:#fff;border-radius:14px;padding:2rem 2.5rem;border:1px solid #E3B23C;">
+    <dl class="row">
+        <dt class="col-sm-4">Name</dt>
+        <dd class="col-sm-8">@Model.Name</dd>
+
+        <dt class="col-sm-4">Email</dt>
+        <dd class="col-sm-8">@Model.Email</dd>
+    </dl>
+    <div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;">
+        <a asp-action="Edit" asp-route-id="@Model.ClientId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

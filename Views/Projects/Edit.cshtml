@@ -1,0 +1,71 @@
+﻿@model CreativeDesk.Models.Project
+
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<h1 style="text-align:center;color:#423E37;">Edit Project</h1>
+<div style="max-width:500px;margin:2rem auto;background:#fff;border-radius:14px;padding:2rem 2.5rem;border:1px solid #E3B23C;">
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ProjectId" />
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-input" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="Deadline" class="form-label"></label>
+        <input asp-for="Deadline" class="form-input" type="date" />
+        <span asp-validation-for="Deadline" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="TotalAmount" class="form-label"></label>
+        <input asp-for="TotalAmount" class="form-input" id="totalAmount" />
+        <span asp-validation-for="TotalAmount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="AmountPaid" class="form-label"></label>
+        <input asp-for="AmountPaid" class="form-input" id="amountPaid" />
+        <span asp-validation-for="AmountPaid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label class="form-label">Remaining Amount</label>
+        <input class="form-input" id="remainingAmount" value="@(Model.TotalAmount - Model.AmountPaid)" readonly />
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label asp-for="ClientId" class="form-label">Client</label>
+        <select asp-for="ClientId" class="form-input" asp-items="ViewBag.ClientId"></select>
+        <span asp-validation-for="ClientId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.2rem;">
+        <label class="form-label">Assign Designers</label>
+        <select name="DesignerIds[]" asp-items="ViewBag.Designers" multiple class="form-input" style="min-height:100px;"></select>
+    </div>
+
+    <div style="display:flex;gap:1rem;justify-content:flex-end;">
+        <button type="submit" class="btn btn-primary">Update Project</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function updateRemainingAmount() {
+            const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+            const paid = parseFloat(document.getElementById('amountPaid').value) || 0;
+            document.getElementById('remainingAmount').value = (total - paid).toFixed(2);
+        }
+
+        document.getElementById('totalAmount').addEventListener('input', updateRemainingAmount);
+        document.getElementById('amountPaid').addEventListener('input', updateRemainingAmount);
+    </script>
+}

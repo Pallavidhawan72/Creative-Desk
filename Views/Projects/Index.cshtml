@@ -1,0 +1,43 @@
+@model IEnumerable<CreativeDesk.Models.Project>
+@{
+    ViewData["Title"] = "Projects";
+}
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+    <h1 style="margin: 0; color: #423E37;">Projects</h1>
+    <a class="btn btn-primary" asp-action="Create" style="font-weight:600; min-width: 140px; padding: 0.7rem 1.5rem; font-size: 1rem;">Add Project</a>
+</div>
+<div class="table-container" style="padding:1.5rem 1rem;background:#fff;border-radius:12px;border:1px solid #E3B23C;">
+    <table class="table" style="width:100%;border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Title</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Deadline</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Total</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Paid</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Remaining</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Client</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="padding:0.8rem;">@item.Title</td>
+                    <td style="padding:0.8rem;">@item.Deadline.ToShortDateString()</td>
+                    <td style="padding:0.8rem;">@item.TotalAmount</td>
+                    <td style="padding:0.8rem;">@item.AmountPaid</td>
+                    <td style="padding:0.8rem;">@item.RemainingAmount</td>
+                    <td style="padding:0.8rem;">@item.Client?.Name</td>
+                    <td style="padding:0.8rem;">
+                        <div style="display:flex;gap:0.5rem;">
+                            <a asp-action="Edit" asp-route-id="@item.ProjectId" class="btn btn-secondary" style="padding:0.4rem 1rem;">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.ProjectId" class="btn btn-secondary" style="padding:0.4rem 1rem;background:#E3B23C;color:#423E37;">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-secondary" style="padding:0.4rem 1rem;background:#c0392b;color:#fff;">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

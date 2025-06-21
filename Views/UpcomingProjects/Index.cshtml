@@ -1,0 +1,25 @@
+@model IEnumerable<CreativeDesk.Models.Project>
+<h1 style="margin-bottom:1.5rem;color:#423E37;">Upcoming Projects</h1>
+<div class="table-container" style="padding:1.5rem 1rem;background:#fff;border-radius:12px;border:1px solid #E3B23C;">
+    <table class="table" style="width:100%;border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Project Name</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Client</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Designers</th>
+                <th style="background:#E3B23C;color:#423E37;font-weight:600;padding:0.8rem;">Deadline</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="padding:0.8rem;">@item.Title</td>
+                    <td style="padding:0.8rem;">@item.Client?.Name</td>
+                    <td style="padding:0.8rem;">@string.Join(", ", item.Designers?.Select(d => d.Name) ?? new List<string>())</td>
+                    <td style="padding:0.8rem;">@item.Deadline.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div> 
